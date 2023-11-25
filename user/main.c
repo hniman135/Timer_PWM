@@ -1,38 +1,12 @@
-/**
-  **************************************************************************
-  * @file     main.c
-  * @brief    main program
-  **************************************************************************
-  *                       Copyright notice & Disclaimer
-  *
-  * The software Board Support Package (BSP) that is made available to
-  * download from Artery official website is the copyrighted work of Artery.
-  * Artery authorizes customers to use, copy, and distribute the BSP
-  * software and its related documentation for the purpose of design and
-  * development in conjunction with Artery microcontrollers. Use of the
-  * software is governed by this copyright notice and the following disclaimer.
-  *
-  * THIS SOFTWARE IS PROVIDED ON "AS IS" BASIS WITHOUT WARRANTIES,
-  * GUARANTEES OR REPRESENTATIONS OF ANY KIND. ARTERY EXPRESSLY DISCLAIMS,
-  * TO THE FULLEST EXTENT PERMITTED BY LAW, ALL EXPRESS, IMPLIED OR
-  * STATUTORY OR OTHER WARRANTIES, GUARANTEES OR REPRESENTATIONS,
-  * INCLUDING BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY,
-  * FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT.
-  *
-  **************************************************************************
-  */
-
+/*====================================================================================
+ * 								INCLUDE FILES
+=================================================================================== */
 #include "at32f403a_407_board.h"
 #include "at32f403a_407_clock.h"
 
-/** @addtogroup AT32F403A_periph_examples
-  * @{
-  */
-
-/** @addtogroup 403A_TMR_pwm_output_tmr3 TMR_pwm_output_tmr3
-  * @{
-  */
-
+/*====================================================================================
+ * 								GLOBAL VARIABLES
+====================================================================================*/
 tmr_output_config_type tmr_oc_init_structure;
 
 uint16_t ccr1_val = 333;
@@ -41,14 +15,15 @@ uint16_t ccr3_val = 166;
 uint16_t ccr4_val = 83;
 uint16_t prescaler_value = 0;
 
+/*====================================================================================
+ * 								LOCAL FUNTION PROTOTYPES
+====================================================================================*/
 void crm_configuration(void);
 void gpio_configuration(void);
 
-/**
-  * @brief  configure the tmr1 pins.
-  * @param  none
-  * @retval none
-  */
+/*====================================================================================
+ * 								LOCAL FUNTIONS
+====================================================================================*/
 void gpio_configuration(void)
 {
   gpio_init_type gpio_init_struct;
@@ -66,11 +41,7 @@ void gpio_configuration(void)
   gpio_init(GPIOB, &gpio_init_struct);
 }
 
-/**
-  * @brief  configures the different peripheral clocks.
-  * @param  none
-  * @retval none
-  */
+
 void crm_configuration(void)
 {
   /* tmr3 clock enable */
@@ -81,11 +52,9 @@ void crm_configuration(void)
   crm_periph_clock_enable(CRM_GPIOB_PERIPH_CLOCK, TRUE);
 }
 
-/**
-  * @brief  main function.
-  * @param  none
-  * @retval none
-  */
+/*====================================================================================
+ * 								GLOBAL FUNTIONS
+====================================================================================*/
 int main(void)
 {
   system_clock_config();
@@ -134,11 +103,3 @@ int main(void)
   {
   }
 }
-
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
